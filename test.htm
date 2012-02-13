@@ -1,0 +1,32 @@
+<html>
+<head>
+    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="ijslt-0.0.1.js"></script>
+    <script type="text/javascript">
+
+$.get("test.xml", function(data) { 
+    actOn(data); 
+}, "xml");
+
+function actOn(xml) {
+    var x = $(xml);
+    var result = x.template("article", function(context, apply) { return "<div class='article'>"+apply(context)+"</div>"; })
+     .template("para", function(context, apply) { return "<p>"+apply(context)+"</p>"; })
+     .template("info", function(context, apply) { return ""; })
+     .template("title", function(context, apply) { 
+        var depth = context.parents("section").length + 1;
+        return "<h"+depth+">"+apply(context)+"</h"+depth+">"; })
+     .template("emphasis", function(context, apply) { return "<em>"+apply(context)+"</em>"; })
+     .template("emphasis[role=strong]", function(context, apply) { return "<strong>"+apply(context)+"</strong>"; }, 5)
+     .template("link[href]", function(context, apply) { 
+        return "<a href='"+context.attr("href")+"'>"+apply(context)+"</a>"; })
+     .transform();
+    $("body").append(result);
+}
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

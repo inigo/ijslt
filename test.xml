@@ -1,0 +1,18 @@
+<article>
+    <section>
+        <title>Heading 1</title>
+        <info>Ignore this</info>
+        <para>
+        This is some content with parts of it <emphasis>emphasized</emphasis> and <emphasis role="strong">emphasized more</emphasis>.
+        </para>
+        <para>
+        And other parts are <literal>not emphasized</literal>.
+        </para>
+        <section>
+            <title>A sub heading</title>
+            <para>
+            With some content and a <link href="http://www.google.com">link</link>.
+            </para>
+        </section>
+    </section>
+</article>
